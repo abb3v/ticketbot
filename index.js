@@ -69,10 +69,18 @@ client.once("ready", async () => {
     /* --- Register commands --- */
     const guildId = options.guildId;
     const guild = client.guilds.cache.get(guildId);
-    let commands = guild.commands;
+
+    if (!guild) {
+        console.log(chalk.default.red(`Guild with ID ${guildId} not found! Registering globally...`));
+        commands = client.application.commands;
+    } else {
+        console.log(chalk.default.greenBright(`Registering commands in guild ${guild.name}`));
+        commands = guild.commands;
+    }
 
     const commandsPath = path.join(__dirname, 'commands');
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
 
     for (const file of commandFiles) {
         const filePath = path.join(commandsPath, file);
