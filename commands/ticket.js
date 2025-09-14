@@ -88,7 +88,7 @@ let executeCommand = async function executeCommand(interaction, getLocale) {
             channel.send({
                 "content": ``,
                 "ephemeral": false,
-                "embeds": [ getStandardEmbed(`🔓 **This Ticket has been unlocked**`) ]
+                "embeds": [ getStandardEmbed(`🔒 **This Ticket has been unlocked by ${interaction.user}**`) ]
             });
 
             setTimeout(() => {
@@ -111,7 +111,7 @@ let executeCommand = async function executeCommand(interaction, getLocale) {
             channel.send({
                 "content": ``,
                 "ephemeral": false,
-                "embeds": [ getStandardEmbed(`🔒 **This Ticket has been closed**`) ]
+                "embeds": [ getStandardEmbed(`🔒 **This Ticket has been closed by ${interaction.user}**`) ]
             });
 
             setTimeout(() => {
