@@ -111,7 +111,7 @@ module.exports = {
                     channel.send({
                         "content": ``,
                         "ephemeral": false,
-                        "embeds": [ getStandardEmbed(`🔓 **This Ticket has been unlocked**`) ]
+                        "embeds": [ getStandardEmbed(`🔓 **This Ticket has been unlocked by ${interaction.user}**`) ]
                     });
                 } else {
                     await ticketmodal.findOneAndUpdate({ ticketid: ticketDoc.ticketid }, { closed: true }, { returnOriginal: false });
@@ -127,7 +127,7 @@ module.exports = {
                     channel.send({
                         "content": ``,
                         "ephemeral": false,
-                        "embeds": [ getStandardEmbed(`🔒 **This Ticket has been closed**`) ]
+                        "embeds": [ getStandardEmbed(`🔓 **This Ticket has been closed by ${interaction.user}**`) ]
                     });
                 }
             }
